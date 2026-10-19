@@ -37,7 +37,7 @@ const V=(x,y,z)=>new THREE.Vector3(x,y,z);
 const status=s=>$('status').textContent=s;
 
 /* ===================== TIMELINE DATA (narration is the pacing authority) =====================
- t0 values come from pauses measured in assets/audio/narration.m4a (silence analysis); scenes N/O lie beyond the
+ t0 values come from pauses measured in narration.m4a (silence analysis); scenes N/O lie beyond the
  end of that file (~108 s) and are estimated. Edit in the "Scene timing" panel or upload a longer narration file. */
 const SCRIPT=[
 ['A','The horsepower problem','shop',0,"Imagine you tell your friend John that your car needs more horsepower. Now, a normal person might think about installing a turbocharger."],
@@ -96,9 +96,9 @@ function mkSet(k,floorMat,key=[6,10,6],ki=2.4,kc=0xffffff){const g=new THREE.Gro
 
 /* ===================== ASSETS ===================== */
 const ENV={},AB={},MODELS={};let actx=null;
-const FILES={models:{lfa:'assets/models/2011_lexus_lfa.glb',bmw:'assets/models/2025_bmw_m4_gt3_evo_g82.glb',turbo:'assets/models/basic_turbo_charger.glb'},
- env:{shop:'assets/environments/autoshop_01_2k.hdr',garage:'assets/environments/parking_garage_2k.hdr',track:'assets/environments/zwartkops_curve_morning_2k.hdr'},
- audio:{narr:'assets/audio/narration.m4a',rev:'assets/audio/vidssave_com_Lexus_LFA_REV_in_the_wild_48KBPS.mp3',rev9:'assets/audio/vidssave_com_Lexus_LFA_revving_to_9k_rpm__128KBPS.mp3',fly:'assets/audio/vidssave_com_Lexus_LFA_Fly-By_Tunnel_Sound_-_Forza_Horizon_5_128KBPS.mp3',w1:'assets/audio/ribhavagrawal-woosh-230554.mp3',w2:'assets/audio/stereogenicstudio-swish-swoosh-woosh-sfx-27-357164.mp3',metal:'assets/audio/freesound_community-metal-drop-89329.mp3'}};
+const FILES={models:{lfa:'2011_lexus_lfa.glb',bmw:'2025_bmw_m4_gt3_evo_g82.glb',turbo:'basic_turbo_charger.glb'},
+ env:{shop:'autoshop_01_2k.hdr',garage:'parking_garage_2k.hdr',track:'zwartkops_curve_morning_2k.hdr'},
+ audio:{narr:'narration.m4a',rev:'vidssave_com_Lexus_LFA_REV_in_the_wild_48KBPS.mp3',rev9:'vidssave_com_Lexus_LFA_revving_to_9k_rpm__128KBPS.mp3',fly:'vidssave_com_Lexus_LFA_Fly-By_Tunnel_Sound_-_Forza_Horizon_5_128KBPS.mp3',w1:'ribhavagrawal-woosh-230554.mp3',w2:'stereogenicstudio-swish-swoosh-woosh-sfx-27-357164.mp3',metal:'freesound_community-metal-drop-89329.mp3'}};
 const missing=[];
 async function loadAll(){
  const pm=new THREE.PMREMGenerator(renderer),gl=new GLTFLoader(),rg=new RGBELoader();let n=0;const tot=3+3+7;const tick=l=>status(`Loading assets ${++n}/${tot}: ${l}`);
